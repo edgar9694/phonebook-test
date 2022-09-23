@@ -208,10 +208,15 @@ function eventListeners() {
 
 function validateForm() {
     let inputValidStatus = [];
-    if(!strRegex.test(contactForm.contactForm__fullName.value) || contactForm.contactForm__fullName.value.trim().length == 0){
+    if(contactForm.contactForm__fullName.value.trim().length == 0){
         let formControl = document.querySelector('.contactForm__fullNameMessage')
         addMessageInput(formControl);
         formControl.innerHTML = 'This field is required'
+        inputValidStatus[0] = false;
+    } else if(!strRegex.test(contactForm.contactForm__fullName.value)){
+        let formControl = document.querySelector('.contactForm__fullNameMessage')
+        addMessageInput(formControl);
+        formControl.innerHTML = 'This field only accepts letters'
         inputValidStatus[0] = false;
     } else {
         fullName = contactForm.contactForm__fullName.value;
@@ -223,7 +228,12 @@ function validateForm() {
         addMessageInput(formControl);
         formControl.innerHTML = 'This field is required'
         inputValidStatus[2] = false;
-    } else if(!phoneRegex.test(contactForm.contactForm__phone.value)){
+    } else if(contactForm.contactForm__phone.value.trim().length < 10 ){
+        let formControl = document.querySelector('.contactForm__phoneMessage')
+        addMessageInput(formControl);
+        formControl.innerHTML = 'Numbers should have at least 10 digits'
+        inputValidStatus[2] = false;
+    }  else if(!phoneRegex.test(contactForm.contactForm__phone.value)){
         let formControl = document.querySelector('.contactForm__phoneMessage')
         addMessageInput(formControl);
         formControl.innerHTML = 'Wrong number format'
