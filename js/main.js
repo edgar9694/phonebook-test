@@ -33,12 +33,13 @@ class Contact {
             contacts = [];
         } else {
             contacts = JSON.parse(localStorage.getItem('contacts'));
+            contacts.sort((a,b) =>a.fullName.localeCompare(b.fullName))
         }
         return contacts; 
     }
 
     static addContact(contact){
-        const contacts = Contact.getContacts();
+        let contacts = Contact.getContacts();
         contacts.push(contact);
         localStorage.setItem('contacts', JSON.stringify(contacts));
     }
@@ -68,9 +69,9 @@ class UI {
     static showContactList(){
         const contacts = Contact.getContacts();
         if(contacts.length > 0){
+            contactList.innerHTML = ''
             contacts.forEach(contact => UI.addToContactList(contact));
             emptyMsg.style.display = 'none';
-            searchInput.style.display = 'none';
         } else {
             emptyMsg.style.display = 'block'
         }
@@ -80,8 +81,6 @@ class UI {
         const listElement = document.createElement('li');
         listElement.classList.add('contactList__item')
         listElement.setAttribute('data-id', contact.id);
-        // <div class="contactList__cover"></div>
-
         listElement.innerHTML = `
         <p class="contactList__text">
             <span class="contactList__fullName">
@@ -137,12 +136,12 @@ function eventListeners() {
             });
         } else {
             const contacts = Contact.getContacts();
-            let lastItemContact = (contacts.length > 0) ? contacts[contacts.length - 1].id : 0;
+            let lastItemContact = (contacts.length > 0) ? contacts.length : 0;
             lastItemContact++;
             const newContact = new Contact(lastItemContact, fullName, phone, email);
             Contact.addContact(newContact)
             UI.closeModal();
-            UI.addToContactList(newContact);
+            UI.showContactList();
             contactForm.reset();
         }
         

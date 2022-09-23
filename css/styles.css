@@ -73,6 +73,13 @@
     
 }
 
+.contactList__fullName,
+.contactList__phone,
+.contactList__email {
+    width: 33.3%;
+    text-align: center;
+}
+
 .contactList__empty {
     display: flex;
     padding: 1.5em;
