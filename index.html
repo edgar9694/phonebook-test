@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact list Application</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <main>
+
+        <!-- Contact List -->
+        <section class="contactSection">
+            <div class="contactSection__header">
+                <h1 class="contactSection__title">Contact List</h1>
+
+                <div class="contactSection__actions">
+                    <button class="contactButton__add">
+                        Add new Contact
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="contactSection__main">
+
+                <ul class="contactList">                    
+                    <li class="contactList__empty">
+                        <h3 class="contactList__text">
+                           You don´t have contacts yet, add some
+                        </h3>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Add Contact Modal -->
+    <div class="contactModal__fullScreen"></div>
+    <form action="" class="contactForm" data-action="add">
+        <div class="contactForm-content">
+            <div class="contactForm__head">
+                <h3 class="contactForm__title">Add Contact</h3>
+                <button type="button" class="contactForm__closeBtn">
+                    X
+                </button>
+            </div>
+            <div class="contactForm__main">
+                <div class="contactForm__element">
+                    <label class="contactForm__label" for="contactForm__fullName">Name</label>
+                    <input type="text" class="contactForm__input contactForm__fullName" name="contactForm__fullName"  placeholder="Jhon Doe">
+                    <div class="contactForm__message contactForm__fullNameMessage"></div>
+                </div>
+                <div class="contactForm__element">
+                    <label class="contactForm__label" for="contactForm__phone">Phone</label>
+                    <input type="text" class="contactForm__input contactForm__phone" name="contactForm__phone" placeholder="04125841684">
+                    <div class="contactForm__message contactForm__phoneMessage"></div>
+                </div>
+                <div class="contactForm__element">
+                    <label class="contactForm__label" for="contactForm__email">Email</label>
+                    <input type="text" class="contactForm__input contactForm__email" name="contactForm__email" placeholder="mail@mail.com">
+                    <div class="contactForm__message contactForm__emailMessage"></div>
+                </div>
+                <div  class="contactForm__element contactForm__actions">
+                    <button class="contactForm__button" >
+                        Add contact
+                    </button>
+                    <button  class="contactButton__delete"  >
+                        delete
+                    </button>
+                    <button  class="contactButton__update">
+                        Edit contact
+                    </button>
+
+                </div>
+            </div>
+ 
+        </div>
+        
+    </form>
+    <!-- End Add Contact Modal -->
+
+    <script src="js/main.js"></script>
+</body>
+</html>
